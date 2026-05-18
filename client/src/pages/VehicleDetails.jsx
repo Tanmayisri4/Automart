@@ -98,8 +98,7 @@ const handleBuyNow = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.post(
-      "http://localhost:5000/api/payments/create-checkout-session",
-
+      `${import.meta.env.VITE_API_URL}/payments/create-checkout-session`,
       {
         vehicleId: vehicle._id,
       },
