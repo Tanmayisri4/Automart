@@ -37,18 +37,14 @@ const registerUser = async (req, res) => {
     const hashedPassword =
       await bcrypt.hash(password, 10);
 
+    const sanitizedRole = role === "seller" ? "seller" : "buyer";
+
     const user = await User.create({
-
       name,
-
       email,
-
       phone,
-
       password: hashedPassword,
-
-      role,
-
+      role: sanitizedRole,
     });
 
     res.status(201).json({

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import API from "../services/api";
 
 function VehicleCard({ vehicle }) {
   const addFavorite = async () => {
@@ -25,9 +26,12 @@ function VehicleCard({ vehicle }) {
 
   } catch (error) {
 
-    console.log(error);
-
-    alert("Failed to add favorite");
+    console.error(error);
+    alert(
+      error?.response?.data?.message ||
+        error?.message ||
+        "Failed to add favorite"
+    );
 
   }
 

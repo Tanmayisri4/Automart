@@ -11,12 +11,14 @@ const {
 const {
   protect,
 } = require("../middleware/authMiddleware");
+const adminOnly = require("../middleware/adminMiddleware");
 
 
 // GET ALL USERS
 router.get(
   "/users",
   protect,
+  adminOnly,
   getAllUsers
 );
 
@@ -25,6 +27,7 @@ router.get(
 router.get(
   "/vehicles",
   protect,
+  adminOnly,
   getAllVehicles
 );
 
@@ -33,6 +36,7 @@ router.get(
 router.delete(
   "/vehicles/:id",
   protect,
+  adminOnly,
   deleteAnyVehicle
 );
 

@@ -9,6 +9,8 @@ const {
   loginUser,
 
   getNotifications,
+  addToFavorites,
+  getFavorites,
 
 } = require("../controllers/authController");
 
@@ -32,6 +34,24 @@ router.post(
 router.post(
   "/login",
   loginUser
+);
+
+
+// ADD TO FAVORITES
+
+router.post(
+  "/favorites/:id",
+  protect,
+  addToFavorites
+);
+
+
+// GET FAVORITES
+
+router.get(
+  "/favorites",
+  protect,
+  getFavorites
 );
 
 

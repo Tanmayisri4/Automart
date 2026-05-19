@@ -122,21 +122,13 @@ const updateVehicle = async (req, res) => {
 
     // CHECK OWNER
 
-    if (
-      vehicle.seller.toString() !==
-      req.user.id
-    ) {
-
+    if (!vehicle.seller || vehicle.seller.toString() !== req.user.id) {
       return res.status(401).json({
-
         message: "Not authorized",
-
       });
-
     }
 
-    const updatedVehicle =
-      await Vehicle.findByIdAndUpdate(
+    const updatedVehicle = await Vehicle.findByIdAndUpdate(
 
         req.params.id,
 
@@ -192,17 +184,10 @@ const deleteVehicle = async (req, res) => {
 
     // CHECK OWNER
 
-    if (
-      vehicle.seller.toString() !==
-      req.user.id
-    ) {
-
+    if (!vehicle.seller || vehicle.seller.toString() !== req.user.id) {
       return res.status(401).json({
-
         message: "Not authorized",
-
       });
-
     }
 
     await vehicle.deleteOne();

@@ -63,13 +63,23 @@ function Navbar() {
         {token && (
           <>
 
-            <Link to="/add-vehicle">
-              Add Vehicle
-            </Link>
+            {user?.role === "seller" && (
+              <>
+                <Link to="/add-vehicle">
+                  Add Vehicle
+                </Link>
 
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
+                <Link to="/dashboard">
+                  Seller Dashboard
+                </Link>
+              </>
+            )}
+
+            {user?.role === "buyer" && (
+              <Link to="/dashboard">
+                Profile
+              </Link>
+            )}
 
             {user?.role === "admin" && (
               <Link to="/admin">
@@ -78,15 +88,15 @@ function Navbar() {
             )}
             
             <Link to="/favorites">
-            Favorites
+              Favorites
             </Link>
 
             <Link to="/notifications">
-            Notifications
+              Notifications
             </Link>
 
             <Link to="/messages">
-            Messages
+              Messages
             </Link>
 
             <button

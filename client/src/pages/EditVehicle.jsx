@@ -81,7 +81,12 @@ function EditVehicle() {
 
     } catch (error) {
 
-      alert(error.response.data.message);
+      console.error(error);
+      alert(
+        error?.response?.data?.message ||
+          error?.message ||
+          "Unable to update vehicle."
+      );
 
     }
 
